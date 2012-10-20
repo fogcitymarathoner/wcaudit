@@ -1,0 +1,83 @@
+%h1
+  = @audit.name
+  Edit WC Info for 
+    
+  
+.tax-form		
+  %form{ :action => save_form_path , :method => "post"} 
+    %fieldset  
+      %h2 
+        Edit Info for 
+        = @audit.namedisplay
+      .tax-field
+        .tax-fed
+        .tax-label
+          %label{:for => "counter"} Counter:
+        .tax-item
+          %input{:type => "text", 
+		  :name => 'id', 
+		  :id => 'id', 
+		  :class => 'tax-input-readonly', 
+		  :readonly => 'readonly',
+		  :value=>"%4d" %@audit.counter}	
+        .tax-good
+      .tax-field
+        .tax-fed
+        .tax-label
+          %label{:for => "id"} ID:
+        .tax-item
+          %input{:type => "text", 
+		  :name => 'id', 
+		  :id => 'id', 
+		  :class => 'tax-input-readonly', 
+		  :readonly => 'readonly',
+		  :value=>"%4d" %@audit.id}	
+        .tax-good
+      .tax-field
+        .tax-fed
+        .tax-label
+          %label{:for => "name"} Name:
+        .tax-item
+          %input{:type => "text", 
+		  :name => 'name', 
+		  :id => 'name', 
+		  :class => 'tax-input-readonly', 
+		  :readonly => 'readonly',
+		  :value=>"%s" %@audit.name}	
+        .tax-good
+      .tax-field
+        .tax-fed
+        .tax-label
+          %label{:for => "title"} Title:
+        .tax-item.gross-profit-term
+          %input{:type => "text", 
+		  :name => "title", 
+		  :id => 'title', 
+		  :class => @class, 
+		  :value=>"%s"  %@audit.title}	
+        .tax-good
+	
+      .tax-field
+        .tax-fed
+        .tax-label
+          %label{:for => "duties"} Duties:
+        .tax-item.gross-profit-term
+          %input{:type => "text", 
+		  :name => "duties", 
+		  :id => "duties", 
+		  :class => @class, 
+		  :value=>"%s"  %@audit.duties}
+        .tax-good
+      .tax-field
+        .tax-fed
+        .tax-label.calc
+          %label{:for => "namedisplay"} Name Displayed:
+        .tax-item
+          %input{:type => "text", 
+		  :name => "namedisplay", 
+		  :id => "namedisplay", 
+		  :class => 'tax-input-readonly', 
+		  :value=>"%s"  %@audit.namedisplay}
+        .tax-good
+
+    %input{:type => "submit", :value => "Send", :class => "button"}
