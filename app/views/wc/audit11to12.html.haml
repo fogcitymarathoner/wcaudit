@@ -4,8 +4,6 @@
   .one
     count
   .two.columns
-    name
-  .two.columns
     name display
   .two.columns
     title
@@ -21,10 +19,8 @@
     .row
       .one
         = emp.counter
-      .two.columns
-        =link_to emp.name, edit_audit_path( :id =>emp.id )
-      .two.columns
-        =emp.namedisplay
+      .three.columns
+        =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
       .two.columns
         =emp.title
       .two.columns
