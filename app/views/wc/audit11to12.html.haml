@@ -1,7 +1,7 @@
 %h1
   Oct 7 2011 to Oct 7 2012.
 .row
-  .one
+  .two
     count
   .three.columns
     name display
@@ -17,7 +17,7 @@
 - @audit.each do |emp|
   - if emp.total >0
     .row
-      .one
+      .two
         = emp.counter
       .three.columns
         =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
