@@ -1,36 +1,35 @@
 %h1
-  Oct 7 2011 to Oct 7 2012
-%table
-  %tr
-    %th
-      count
-    %th
-      name
-    %th
-      name display
-    %th
-      title
-    %th
-      duties
-    %th
-      state
-    %th
-      total
-    - i = 0
-    - @audit.each do |emp|
-      - if emp.total >0
-        %tr
-          %td
-            = emp.counter
-          %td
-            =link_to emp.name, edit_audit_path( :id =>emp.id )
-          %td
-            =emp.namedisplay
-          %td
-            =emp.title
-          %td
-            =emp.duties
-          %td
-            =emp.state
-          %td
-            =emp.total
+  Oct 7 2011 to Oct 7 2012.
+.row
+  .one
+    count
+  .two.columns
+    name
+  .two.columns
+    name display
+  .two.columns
+    title
+  .two.columns
+    duties
+  .two.columns
+    state
+  .two.columns
+    total
+- i = 0
+- @audit.each do |emp|
+  - if emp.total >0
+    .row
+      .one
+        = emp.counter
+      .two.columns
+        =link_to emp.name, edit_audit_path( :id =>emp.id )
+      .two.columns
+        =emp.namedisplay
+      .two.columns
+        =emp.title
+      .two.columns
+        =emp.duties
+      .two.columns
+        =emp.state
+      .two.columns
+        = emp.total

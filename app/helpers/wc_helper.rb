@@ -1,2 +1,2 @@
-module ClubsHelper
+module WcHelper
 end
