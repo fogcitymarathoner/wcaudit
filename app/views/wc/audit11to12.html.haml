@@ -17,7 +17,7 @@
 - @audit.each do |emp|
   - if emp.total >0
     .row
-      .two
+      .two.columns
         = emp.counter
       .three.columns
         =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
