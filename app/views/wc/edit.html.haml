@@ -48,6 +48,17 @@
       .tax-field
         .tax-fed
         .tax-label
+          %label{:for => "percent"} Percent:
+        .tax-item
+          %input{:type => "text", 
+		  :name => 'percent', 
+		  :id => 'percent', 
+		  :class => 'tax-input', 
+		  :value=>"%s" %@audit.percent}	
+        .tax-good
+      .tax-field
+        .tax-fed
+        .tax-label
           %label{:for => "title"} Title:
         .tax-item.gross-profit-term
           %input{:type => "text", 

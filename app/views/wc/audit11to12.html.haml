@@ -1,31 +1,108 @@
 %h1
   Oct 7 2011 to Oct 7 2012.
+
+.row
+  .twelve.columns
+    <h2>Officers</h2>
+    
 .row
   .two.columns
-    count
-  .three.columns
-    name display
-  .two.columns
+    <h4>Name</h>
+  .one.columns
     title
+  .one.columns
+    percent ownership
   .two.columns
     duties
-  .two.columns
+  .one.columns
     state
-  .two.columns
+  .one.columns.left
     total
 - i = 0
+- total = 0
+- exclude = ['MARCCONDON','SHEREENEOH']
 - @audit.each do |emp|
-  - if emp.total >0
+  - if emp.total >0 && exclude.include?(emp.name.rstrip())
+    - total = total + emp.total
     .row
       .two.columns
-        = emp.counter
-      .three.columns
         =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
-      .two.columns
+      .one.columns
         =emp.title
+      .one.columns
+        =emp.percent
       .two.columns
         =emp.duties
-      .two.columns
+      .one.columns
         =emp.state
-      .two.columns
-        = emp.total
+      .one.columns.left
+        = sprintf("%05.2f", emp.total)
+
+.row	
+  .three.columns
+    =''
+  .two.columns
+    =''
+  .five.columns.left
+    <h4>Total Officer Salary = $
+    = sprintf("%05.2f", total)
+    <h4>
+
+.row
+  .twelve.columns
+    <h2>Employees</h2>
+.row
+  .three.columns
+    name display
+  .three.columns
+    title
+  .four.columns
+    duties
+  .one.columns
+    state
+  .one.columns.left
+    total
+- states = ['AZ','CA','MO','NJ','TX']
+- statetotals = Hash.new()
+- totaltotals =0
+- states.each do |state|
+  - statetotals[state]=0
+  - @audit.each do |emp|
+    - if emp.total >0 && !exclude.include?(emp.name.rstrip()) && emp.state.rstrip() == state
+      - statetotals[state] = statetotals[state] + emp.total
+
+- states.each do |state|
+  - @audit.each do |emp|
+    - if emp.total >0 && !exclude.include?(emp.name.rstrip())&& emp.state.rstrip() == state
+      - totaltotals = totaltotals + emp.total
+      .row
+        .three.columns
+          =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
+        .three.columns
+          =emp.title
+        .four.columns
+          =emp.duties
+        .one.columns
+          =emp.state
+        .one.columns.left
+          = "%05.2f"%  emp.total	
+
+  .row	
+    .three.columns
+      =''
+    .three.columns
+      =''
+    .six.columns.left
+      <h4>
+      = state+' Total'
+      = "%05.2f"% statetotals[state]	
+      </h4>
+      
+
+.row	
+  .four.columns
+    = ''
+  .eight.columns.left
+    <h4>Total Non Officer Pay
+    = "%05.2f"%  totaltotals     
+    </h4>    

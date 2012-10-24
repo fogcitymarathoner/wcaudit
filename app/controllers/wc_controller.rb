@@ -2,8 +2,10 @@ require 'pp'
 class WcController < ApplicationController
 
   def audit11to12
-	@audit = Audit11To12.find(:all, :order => "wc11to12_employees.name ASC")
+	@audit = Audit11To12.find(:all, :order => "wc11to12_employees.state ASC, wc11to12_employees.name ASC")
 
+
+	#  alter table wc11to12_employees add column percent int;
   end
   
 
