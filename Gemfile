@@ -13,7 +13,7 @@ gem "haml"
 #gem 'sqlite3'
 gem 'pg','>= 0.14.0'
 
-gem 'zurb-foundation'
+gem 'ZURB-foundation'
 
 
 # Gems used only for assets and not required
