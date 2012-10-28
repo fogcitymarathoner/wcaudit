@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Wcaudit::Application.load_tasks
+Wcauditbs2::Application.load_tasks
