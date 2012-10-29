@@ -34,7 +34,18 @@ total_cost = 0.0
 	received= received + inventory_transaction.quantity.to_f 
 	total_cost = total_cost + inventory_transaction.cost*inventory_transaction.quantity
 end %>
-<% if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'invoice'%>
+<%
+# regular sale
+if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'invoice'%>
+
+<% sold = sold + inventory_transaction.quantity
+	average_price_total = average_price_total+ (inventory_transaction.price*inventory_transaction.quantity)
+	
+end
+%>
+<%
+# a return
+if inventory_transaction.quantity.to_f  > 0.0 && inventory_transaction.transaction_type == 'invoice'%>
 
 <% sold = sold + inventory_transaction.quantity
 	average_price_total = average_price_total+ (inventory_transaction.price*inventory_transaction.quantity)
