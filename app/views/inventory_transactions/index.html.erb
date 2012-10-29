@@ -1,6 +1,7 @@
 <%- model_class = InventoryTransaction -%>
 <%- 
 sold = 0.0
+shrinkage = 0.0
 received = 0.0
 average_price = 0.0
 average_cost = 0.0
@@ -44,7 +45,7 @@ end
 # account for breakage
 if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'inventory'%>
 
-<% #sold = sold + inventory_transaction.quantity
+<% shrinkage = shrinkage + inventory_transaction.quantity
 	
 	
 end
@@ -80,7 +81,7 @@ Results
 	    <%= received%>
 	    </p>
 	    <p>On Hand
-	    <%= received+sold %>
+	    <%= received+sold+shrinkage%>
 	    </p>
 	    <p>Price Total
 	    <%= average_price_total %>
