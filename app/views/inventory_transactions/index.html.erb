@@ -8,9 +8,21 @@ average_cost = 0.0
 average_price_total = 0.0
 total_cost = 0.0
 -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
+<div class="row">
+<div class="span8"><p>d</p></div>
 </div>
+<div class="row">
+<div class="span8"><p>d</p></div>
+</div>
+<div class="row">
+<div class="span8"><p>f</p></div>
+</div>
+
+<div class="row">
+<div class="span8"><p><h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1></p></div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,7 +34,6 @@ total_cost = 0.0
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
       <th><%= model_class.human_attribute_name(:notes) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -70,7 +81,6 @@ end
         <td><%= inventory_transaction.price %></td>
         <td><%= inventory_transaction.quantity %></td>
         <td><%= inventory_transaction.notes %></td>
-        <td><%= inventory_transaction.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_inventory_transaction_path(inventory_transaction), :class => 'btn btn-mini' %>
@@ -84,34 +94,40 @@ end
     <% end %>
   </tbody>
 </table>
-Results
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_inventory_transaction_path,
             :class => 'btn btn-primary' %>
-	    <p>Received
-	    <%= received%>
-	    </p>
-	    <p>On Hand
-	    <%= received+sold+shrinkage%>
-	    </p>
-	    <p>Price Total
-	    <%= average_price_total %>
-	    </p>
-	    <p>Shrinkage
-	    <%= shrinkage %>
-	    </p>
-	    <p>Pieces sold
-	    <%= sold %>
-	    </p>
-	    <p>Total Cost
-	    <%= total_cost %>
-	    </p>
-	    <p>Cost Average
-	    <%= total_cost/received %>
-	    </p>
-	    <p>Price Average
-	    <%= (average_price_total/sold) %>
-	    </p>
-	    <p>Margin
-	    <%= (average_price_total/sold)/( total_cost/received) %>
-	    </p>
+	    <h2>Results</h2>
+	    
+<div class="row">
+	<div class="span2">Received</div>
+	<div class="span2"><%= received%></div>
+	<div class="span2">On Hand</div>
+	<div class="span2"><%= received+sold+shrinkage%></div>
+</div>
+<div class="row">
+	<div class="span2">Price Total</div>
+	<div class="span2"> <%= average_price_total %></div>
+	<div class="span2">Shrinkage</div>
+	<div class="span2"><%= shrinkage %></div>
+</div>
+
+<div class="row">
+	<div class="span2">Pieces sold</div>
+	<div class="span2"><%= sold %></div>
+	<div class="span2">Total Cost</div>
+	<div class="span2"> <%= total_cost %></div>
+</div>
+
+<div class="row">
+	<div class="span2">Cost Average</div>
+	<div class="span2"><%= total_cost/received %></div>
+	<div class="span2">Price Average</div>
+	<div class="span2"> <%= (average_price_total/sold) %></div>
+</div>
+<div class="row">
+	<div class="span2">Margin</div>
+	<div class="span2"> <%= (average_price_total/sold)/( total_cost/received) %></div>
+	<div class="span2">Margin</div>
+	<div class="span2"> <%= (average_price_total/sold)/( total_cost/received) %></div>
+</div>

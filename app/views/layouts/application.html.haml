@@ -8,22 +8,31 @@
     = csrf_meta_tag
 
 %body
-  #navbar
-    %ul
-      %li
-        = link_to 'Home', home_path
-      %li
-        = link_to 'Vendors', vendors_path
-      %li
-        = link_to 'Products', products_path
-      %li
-        = link_to 'Inventory Items', inventory_items_path
-      %li
-        = link_to 'Inventory Transactions', inventory_transactions_path
-      %li
-        = link_to 'Customers', customers_path
-      %li
-        = link_to 'Invoices', invoices_path
-      %li
-        = link_to 'InvoiceItems', invoice_items_path
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a{ :href=>'#',:class => "btn btn-navbar", :data_toggle=>'collapse' , :data_target=>'nav-collapse'  }
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand
+          Some Store
+        .nav-collapse
+          %ul{:class=>'nav'}
+            %li
+              = link_to 'Home', home_path
+            %li
+              = link_to 'Vendors', vendors_path
+            %li
+              = link_to 'Products', products_path
+            %li
+              = link_to 'Inventory Items', inventory_items_path
+            %li
+              = link_to 'Inventory Transactions', inventory_transactions_path
+            %li
+              = link_to 'Customers', customers_path
+            %li
+              = link_to 'Invoices', invoices_path
+            %li
+              = link_to 'InvoiceItems', invoice_items_path
   = yield
