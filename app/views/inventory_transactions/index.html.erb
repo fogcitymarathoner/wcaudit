@@ -47,8 +47,8 @@ end
 # a return
 if inventory_transaction.quantity.to_f  > 0.0 && inventory_transaction.transaction_type == 'invoice'%>
 
-<% sold = sold - inventory_transaction.quantity
-	average_price_total = average_price_total+ (inventory_transaction.price*(-1)*inventory_transaction.quantity)
+<% sold = sold +inventory_transaction.quantity
+	average_price_total = average_price_total+ (inventory_transaction.price*inventory_transaction.quantity)
 	
 end
 %>
