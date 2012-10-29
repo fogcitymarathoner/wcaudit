@@ -3,7 +3,7 @@ class InventoryTransactionsController < ApplicationController
   # GET /inventory_transactions
   # GET /inventory_transactions.json
   def index
-    @inventory_transactions = InventoryTransaction.all
+    @inventory_transactions = InventoryTransaction.find(:all, :order => "id")
 
     respond_to do |format|
       format.html # index.html.erb

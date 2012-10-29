@@ -1,4 +1,12 @@
 <%- model_class = InventoryTransaction -%>
+<%- 
+sold = 0.0
+received = 0.0
+average_price = 0.0
+average_cost = 0.0
+average_price_total = 0.0
+total_cost = 0.0
+-%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
@@ -12,12 +20,26 @@
       <th><%= model_class.human_attribute_name(:cost) %></th>
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:notes) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @inventory_transactions.each do |inventory_transaction| %>
+    
+<% if inventory_transaction.quantity.to_f  > 0.0 && inventory_transaction.transaction_type == 'inventory'%>
+<%
+	received= received + inventory_transaction.quantity.to_f 
+	total_cost = total_cost + inventory_transaction.cost*inventory_transaction.quantity
+end %>
+<% if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'invoice'%>
+
+<% sold = sold + inventory_transaction.quantity
+	average_price_total = average_price_total+ (inventory_transaction.price*inventory_transaction.quantity)
+	
+end
+%>
       <tr>
         <td><%= link_to inventory_transaction.id, inventory_transaction_path(inventory_transaction) %></td>
         <td><%= inventory_transaction.transaction_type %></td>
@@ -26,7 +48,8 @@
         <td><%= inventory_transaction.cost %></td>
         <td><%= inventory_transaction.price %></td>
         <td><%= inventory_transaction.quantity %></td>
-        <td><%=l inventory_transaction.created_at %></td>
+        <td><%= inventory_transaction.notes %></td>
+        <td><%= inventory_transaction.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_inventory_transaction_path(inventory_transaction), :class => 'btn btn-mini' %>
@@ -44,3 +67,24 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_inventory_transaction_path,
             :class => 'btn btn-primary' %>
+	    <p>Received
+	    <%= received%>
+	    </p>
+	    <p>On Hand
+	    <%= received+sold %>
+	    </p>
+	    <p>Price Total
+	    <%= average_price_total %>
+	    </p>
+	    <p>Total Cost
+	    <%= total_cost %>
+	    </p>
+	    <p>Cost Average
+	    <%= total_cost/received %>
+	    </p>
+	    <p>Price Average
+	    <%= (average_price_total/sold) %>
+	    </p>
+	    <p>Margin
+	    <%= (average_price_total/sold)/( total_cost/received) %>
+	    </p>
