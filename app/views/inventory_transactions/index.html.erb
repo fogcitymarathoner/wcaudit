@@ -40,6 +40,15 @@ end %>
 	
 end
 %>
+<%
+# account for breakage
+if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'inventory'%>
+
+<% sold = sold + inventory_transaction.quantity
+	
+	
+end
+%>
       <tr>
         <td><%= link_to inventory_transaction.id, inventory_transaction_path(inventory_transaction) %></td>
         <td><%= inventory_transaction.transaction_type %></td>
