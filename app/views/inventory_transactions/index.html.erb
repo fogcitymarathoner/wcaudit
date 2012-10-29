@@ -44,7 +44,7 @@ end
 # account for breakage
 if inventory_transaction.quantity.to_f  < 0.0 && inventory_transaction.transaction_type == 'inventory'%>
 
-<% sold = sold + inventory_transaction.quantity
+<% #sold = sold + inventory_transaction.quantity
 	
 	
 end
@@ -84,6 +84,9 @@ Results
 	    </p>
 	    <p>Price Total
 	    <%= average_price_total %>
+	    </p>
+	    <p>Pieces sold
+	    <%= sold %>
 	    </p>
 	    <p>Total Cost
 	    <%= total_cost %>
