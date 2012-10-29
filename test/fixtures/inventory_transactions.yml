@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  invoice_item_id: 1
+  inventory_item_id: 1
+  cost: 1.5
+  price: 1.5
+  quantity: 1.5
+
+two:
+  invoice_item_id: 1
+  inventory_item_id: 1
+  cost: 1.5
+  price: 1.5
+  quantity: 1.5

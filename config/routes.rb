@@ -1,4 +1,16 @@
 Wcauditbs2::Application.routes.draw do
+  resources :inventory_transactions
+
+  resources :inventory_items
+
+  resources :invoice_items
+
+  resources :invoices
+
+  resources :customers
+
+  resources :vendors
+
  resources :products
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,4 +72,11 @@ Wcauditbs2::Application.routes.draw do
 	match '/wc/edit/:id', :to => 'wc#edit', :as => :edit_audit
 	match '/wc/save_form', :to => 'wc#save_form', :as => :save_form
 	match '/wc/audits', :to=> 'wc#audit11to12', :as => :home
+	match '/vendors', :to=> 'vendors#index', :as => :vendors
+	match '/products', :to=> 'products#index', :as => :products
+	match '/inventory_items', :to=> 'inventory_items#index', :as => :inventory_items
+	match '/inventory_transactions', :to=> 'inventory_transactions#index', :as => :inventory_transactions
+	match '/customers', :to=> 'customers#index', :as => :customers
+	match '/invoices', :to=> 'invoices#index', :as => :invoices
+	match '/invoice_items', :to=> 'invoice_items#index', :as => :invoice_items
 end

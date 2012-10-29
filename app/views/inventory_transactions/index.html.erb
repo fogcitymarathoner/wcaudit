@@ -1,0 +1,46 @@
+<%- model_class = InventoryTransaction -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:transaction_type) %></th>
+      <th><%= model_class.human_attribute_name(:invoice_item_id) %></th>
+      <th><%= model_class.human_attribute_name(:inventory_item_id) %></th>
+      <th><%= model_class.human_attribute_name(:cost) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventory_transactions.each do |inventory_transaction| %>
+      <tr>
+        <td><%= link_to inventory_transaction.id, inventory_transaction_path(inventory_transaction) %></td>
+        <td><%= inventory_transaction.transaction_type %></td>
+        <td><%= inventory_transaction.invoice_item_id %></td>
+        <td><%= inventory_transaction.inventory_item_id %></td>
+        <td><%= inventory_transaction.cost %></td>
+        <td><%= inventory_transaction.price %></td>
+        <td><%= inventory_transaction.quantity %></td>
+        <td><%=l inventory_transaction.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_inventory_transaction_path(inventory_transaction), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      inventory_transaction_path(inventory_transaction),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_inventory_transaction_path,
+            :class => 'btn btn-primary' %>

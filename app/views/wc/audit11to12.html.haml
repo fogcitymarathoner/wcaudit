@@ -2,21 +2,21 @@
   Oct 7 2011 to Oct 7 2012.
 
 .row
-  .twelve.columns
+  .span12
     <h2>Officers</h2>
     
 .row
-  .two.columns
+  .span2
     <h4>Name</h>
-  .one.columns
+  .span1
     title
-  .one.columns
+  .span1
     percent ownership
-  .two.columns
+  .span2
     duties
-  .one.columns
+  .span1
     state
-  .one.columns.left
+  .span1
     total
 - i = 0
 - total = 0
@@ -25,42 +25,42 @@
   - if emp.total >0 && exclude.include?(emp.name.rstrip())
     - total = total + emp.total
     .row
-      .two.columns
+      .span2
         =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
-      .one.columns
+      .span1
         =emp.title
-      .one.columns
+      .span1
         =emp.percent
-      .two.columns
+      .span2
         =emp.duties
-      .one.columns
+      .span1
         =emp.state
-      .one.columns.left
+      .span2.1.left
         = sprintf("%05.2f", emp.total)
 
 .row	
-  .three.columns
+  .span3
     =''
-  .two.columns
+  .span2
     =''
-  .five.columns.left
+  .span5.left
     <h4>Total Officer Salary = $
     = sprintf("%05.2f", total)
     <h4>
 
 .row
-  .twelve.columns
+  .span12
     <h2>Employees</h2>
 .row
-  .three.columns
+  .span3
     name display
-  .three.columns
+  .span3
     title
-  .four.columns
+  .span4
     duties
-  .one.columns
+  .span1
     state
-  .one.columns.left
+  .span1.left
     total
 - states = ['AZ','CA','MO','NJ','TX']
 - statetotals = Hash.new()
@@ -76,23 +76,23 @@
     - if emp.total >0 && !exclude.include?(emp.name.rstrip())&& emp.state.rstrip() == state
       - totaltotals = totaltotals + emp.total
       .row
-        .three.columns
+        .span3
           =link_to emp.namedisplay, edit_audit_path( :id =>emp.id )
-        .three.columns
+        .span3
           =emp.title
-        .four.columns
+        .span4
           =emp.duties
-        .one.columns
+        .span1
           =emp.state
-        .one.columns.left
+        .span1.left
           = "%05.2f"%  emp.total	
 
   .row	
-    .three.columns
+    .span3
       =''
-    .three.columns
+    .span3
       =''
-    .six.columns.left
+    .span6.left
       <h4>
       = state+' Total'
       = "%05.2f"% statetotals[state]	
@@ -100,9 +100,9 @@
       
 
 .row	
-  .four.columns
+  .span4
     = ''
-  .eight.columns.left
+  .span8.left
     <h4>Total Non Officer Pay
     = "%05.2f"%  totaltotals     
     </h4>    

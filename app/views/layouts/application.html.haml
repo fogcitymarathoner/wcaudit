@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-%html
+%html{lang: 'en'}
   %head
     %title
       WC Audit 11 to 12
     =stylesheet_link_tag    "application", :media => "all" 
-    <link rel="stylesheet" href="/stylesheets/app.css"> 
     = javascript_include_tag "application" 
     = csrf_meta_tag
 
@@ -13,4 +12,18 @@
     %ul
       %li
         = link_to 'Home', home_path
+      %li
+        = link_to 'Vendors', vendors_path
+      %li
+        = link_to 'Products', products_path
+      %li
+        = link_to 'Inventory Items', inventory_items_path
+      %li
+        = link_to 'Inventory Transactions', inventory_transactions_path
+      %li
+        = link_to 'Customers', customers_path
+      %li
+        = link_to 'Invoices', invoices_path
+      %li
+        = link_to 'InvoiceItems', invoice_items_path
   = yield
